@@ -350,7 +350,7 @@
                 <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500/50 via-emerald-500/50 to-slate-800 -translate-x-1/2 hidden md:block"></div>
 
                 <div class="space-y-12">
-                    <!-- Item 1: Putra BG Gemilang (New Addition) -->
+                    <!-- Item 1: Putra BG Gemilang -->
                     <div class="relative flex flex-col md:flex-row items-center group reveal">
                         <div class="flex items-center justify-start w-full md:w-1/2 md:pr-10 md:text-right order-2 md:order-1">
                             <div class="bg-slate-800/60 dark:bg-slate-900/80 border border-slate-700/60 p-6 rounded-2xl shadow-lg hover:border-cyan-500/50 hover:shadow-cyan-500/10 hover:-translate-y-1 transition-all w-full">
@@ -528,6 +528,7 @@
             <div class="flex flex-col items-center justify-center gap-2 mb-10 reveal delay-100">
                 <div class="flex flex-wrap items-center justify-center gap-2">
                     <button id="btn-projects" onclick="filterPortfolio('projects', event)" class="filter-btn active px-5 py-2.5 rounded-xl text-xs font-bold bg-cyan-500 text-slate-950 transition-all hover:scale-105 shadow-lg shadow-cyan-500/20">Projects</button>
+                    <button onclick="filterPortfolio('viral', event)" class="filter-btn px-5 py-2.5 rounded-xl text-xs font-semibold bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-white transition-all hover:scale-105">🔥 Most Viral</button>
                     <button onclick="filterPortfolio('design', event)" class="filter-btn px-5 py-2.5 rounded-xl text-xs font-semibold bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-white transition-all hover:scale-105">Graphic Design</button>
                     <button onclick="filterPortfolio('video', event)" class="filter-btn px-5 py-2.5 rounded-xl text-xs font-semibold bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-white transition-all hover:scale-105">Video Editing</button>
                     <button onclick="filterPortfolio('planning', event)" class="filter-btn px-5 py-2.5 rounded-xl text-xs font-semibold bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-white transition-all hover:scale-105">Content Planning</button>
@@ -541,6 +542,21 @@
 
             <!-- Gallery Grid -->
             <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- ===== MOST VIRAL CONTENT (Placeholder / Template) ===== -->
+                <div class="portfolio-item viral group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg hover:border-cyan-500/50 transition-all cursor-pointer reveal delay-100" onclick="openModal('Konten Viral Puncak Engagement', 'Deskripsi pencapaian konten viral ini (jumlah penonton, jangkauan, atau interaksi tinggi). Ganti link Google Drive / Video Anda di sini.', 'Most Viral', 'https://drive.google.com/file/d/1MqP8F2q_gP2UkfNstflS10_g1Lvn80My/preview', true)">
+                    <div class="relative overflow-hidden aspect-video bg-slate-800">
+                        <img src="https://lh3.googleusercontent.com/d/1KdWLIbzfVfl_erx6sIufuviH-1tlm3-5" alt="Most Viral Content Cover" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/800x450/1e293b/f59e0b?text=Most+Viral+Content';">
+                        <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="px-4 py-2 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs"><i class="fas fa-play mr-1"></i> Tonton Konten</span>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Most Viral Content</span>
+                        <h4 class="font-bold text-slate-100 text-base">Judul Konten Viral Anda</h4>
+                        <p class="text-slate-400 text-xs line-clamp-2">Pencapaian performa tinggi, interaksi audiens, dan strategi di balik konten yang viral.</p>
+                    </div>
+                </div>
 
                 <!-- ===== GRAPHIC DESIGN (3 BOX) ===== -->
                 <!-- Design 1 (Tampil di Projects) -->
@@ -975,7 +991,10 @@
             const driveBtn = document.getElementById('driveLinkBtn');
             const driveText = document.getElementById('driveLinkText');
 
-            if (category === 'design') {
+            if (category === 'viral') {
+                driveBtn.href = "https://drive.google.com/drive/folders/1_Av-9wuBXA4xe8yFujtRizs4j8DXREwQ?usp=sharing"; // Ganti link khusus folder viral Anda jika ada
+                driveText.innerText = "Lihat Folder Konten Viral di Drive";
+            } else if (category === 'design') {
                 driveBtn.href = "https://drive.google.com/drive/folders/1m3r39dUoVbLhA9YSIVcQGLTQIkI2SRPC?usp=drive_link";
                 driveText.innerText = "Lihat Folder Graphic Design di Drive";
             } else if (category === 'video') {
@@ -983,7 +1002,7 @@
                 driveText.innerText = "Lihat Folder Video Editing di Drive";
             } else if (category === 'planning') {
                 driveBtn.href = "https://drive.google.com/drive/folders/1_Av-9wuBXA4xe8yFujtRizs4j8DXREwQ?usp=sharing";
-                driveText.innerText = "Lihat Semua Projek di Google Drive";
+                driveText.innerText = "Lihat Folder Content Planning di Drive";
             } else {
                 // Default / Projects
                 driveBtn.href = "https://drive.google.com/drive/folders/1_Av-9wuBXA4xe8yFujtRizs4j8DXREwQ?usp=sharing";
